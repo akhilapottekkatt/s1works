@@ -1,4 +1,4 @@
-year=int(input("enter u want to find leapyears till the year"))
+year=int(input("Enter the year till u want to find leap years"))
 current_year=int(input("enter the current year"))
 for i in range(current_year,year+1):
     
