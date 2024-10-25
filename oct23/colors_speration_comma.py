@@ -1,7 +1,8 @@
-a=[]
-size=int(input("enter size"))
-for i in range(0,size):
-    b=input("enter the colors",end=",")
-    a.append(b)
+b=[]
+size= int(input("enter the size of array"))
+for i in range(size):
+    c=input("enter the colors")
+    b.append(c)
 
-print(a)
+print(b[0], b[-1],sep=",")
+    
