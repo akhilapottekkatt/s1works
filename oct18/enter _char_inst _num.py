@@ -6,7 +6,7 @@ for i in range(0,size):
             a.append(b)
 
         else:
-            a.append("$")
+            a.append("over")
 
 print(a)
         
