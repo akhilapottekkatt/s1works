@@ -12,7 +12,7 @@ while True:
     print("2.sort acending order")
     print("3.create new list of even numbers")
     print("4.exit")
-    choice = int(input("enter the values"))
+    choice = int(input("select your choice"))
     if choice == 1:
         print("the greatest value is",max(list1))
         print("the lowest value is",min(list1))
