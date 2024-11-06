@@ -22,3 +22,4 @@ else:
     dict1["Grade"]="FAIL"
 
 print(dict1)
+print("after deleting roll number ",dict1.pop("roll no"),dict1)
