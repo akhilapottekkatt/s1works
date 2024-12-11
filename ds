@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <string.h>
+
+#define SIZE 26 // Universal set size for 'a' to 'z'
+
+void setToBitVector(char *set, int bitVector[]) {
+    for (int i = 0; i < strlen(set); i++) {
+        if (set[i] >= 'a' && set[i] <= 'z') { // Only process 'a' to 'z'
+            bitVector[set[i] - 'a'] = 1;
+        }
+    }
+}
+
+void printSet(int bitVector[]) {
+    printf("{ ");
+    for (int i = 0; i < SIZE; i++) {
+        if (bitVector[i]) {
+            printf("%c ", i + 'a');
+        }
+    }
+    printf("}\n");
+}
+
+void unionSets(int set1[], int set2[], int result[]) {
+    for (int i = 0; i < SIZE; i++) {
+        result[i] = set1[i] | set2[i];
+    }
+}
+
+void intersectionSets(int set1[], int set2[], int result[]) {
+    for (int i = 0; i < SIZE; i++) {
+        result[i] = set1[i] & set2[i];
+    }
+}
+
+void differenceSets(int set1[], int set2[], int result[]) {
+    for (int i = 0; i < SIZE; i++) {
+        result[i] = set1[i] & ~set2[i];
+    }
+}
+
+void complementSet(int set[], int result[]) {
+    for (int i = 0; i < SIZE; i++) {
+        result[i] = !set[i];
+    }
+}
+
+int main() {
+    char set1[SIZE + 1], set2[SIZE + 1];
+    int bitSet1[SIZE] = {0}, bitSet2[SIZE] = {0};
+    int result[SIZE] = {0};
+
+    // Input sets
+    printf("Enter first set of characters (a-z): ");
+    fgets(set1, SIZE + 1, stdin);
+    set1[strcspn(set1, "\n")] = 0; // Remove trailing newline
+
+    printf("Enter second set of characters (a-z): ");
+    fgets(set2, SIZE + 1, stdin);
+    set2[strcspn(set2, "\n")] = 0;
+
+    // Convert to bit vectors
+    setToBitVector(set1, bitSet1);
+    setToBitVector(set2, bitSet2);
+
+    // Perform operations
+    printf("\nUnion: ");
+    unionSets(bitSet1, bitSet2, result);
+    printSet(result);
+
+    printf("Intersection: ");
+    intersectionSets(bitSet1, bitSet2, result);
+    printSet(result);
+
+    printf("Difference (Set1 - Set2): ");
+    differenceSets(bitSet1, bitSet2, result);
+    printSet(result);
+
+    printf("Complement of Set1: ");
+    complementSet(bitSet1, result);
+    printSet(result);
+
+    printf("Complement of Set2: ");
+    complementSet(bitSet2, result);
+    printSet(result);
+
+    return 0;
+}
