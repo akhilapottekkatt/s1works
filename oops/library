@@ -1,0 +1,56 @@
+books=[]
+
+class book:
+    
+    def __init__(self,book_name,author,asin):
+        self.asin = asin
+        self.book_name=book_name
+        self.author = author
+    def add_books(self):
+        
+        if self.book_name not in books:
+
+            books.append(self.book_name)
+        else:
+            return -1
+        
+
+    def display(self):
+        print("book",self.book_name, "author",self.author,"bnsy",self.asin)
+        
+
+    def update(self,new):
+        self.author =new
+
+class library(book):
+    
+    def __init__(self,book_name,author,copies):
+        super().__init__(book_name,author)
+        self.copies=copies
+    
+
+    def lend(self,book,person):
+        boook_detail={}
+        self.person=person
+        self.book =book
+        if self.book_name in books and self.copies>0:
+            print("book in stock")
+            self.copies-=1
+            books.remove(self.book_name)
+            boook_detail[person]=self.book
+        else:
+            print("not in stock")
+    def display(self):
+        return(f"the person {self.person}the book{self.book_name}")
+    
+    def book_return(self,book,person):
+        books.append(self.book_name)
+        self.copies+=1
+        book1=boook_detail.pop(self.book)
+    def display_details(self):
+        print(books)
+
+book1=book("manj","MT","ASDRE")
+print(book1.display())
+
+lend1=library.lend("mange","akhila")
