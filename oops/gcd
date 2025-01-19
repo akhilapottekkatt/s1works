@@ -1,0 +1,10 @@
+def gcd_find(a,b):
+    while(b != 0 ):
+        temp = b
+        b = a % b
+        a = temp
+
+    return a
+
+
+print(gcd_find(4,5))
