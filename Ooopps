@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+class Product {
+    String pname, pcode;
+    int price;
+
+    // Default constructor
+    public Product() {}
+
+    // Parameterized constructor
+    public Product(String pname, String pcode, int price) {
+        this.pname = pname;
+        this.pcode = pcode;
+        this.price = price;
+    }
+
+    // Setters and getters
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public String getPcode() {
+        return pcode;
+    }
+
+    public void setPcode(String pcode) {
+        this.pcode = pcode;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    // Display product details
+    public void display() {
+        System.out.println("Product Code: " + pcode);
+        System.out.println("Product Name: " + pname);
+        System.out.println("Price: " + price);
+    }
+}
+
+public class Cars {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Create a Product p1 with user input
+        Product p1 = new Product();
+        System.out.print("Enter product name for p1: ");
+        p1.setPname(sc.nextLine());
+        System.out.print("Enter product code for p1: ");
+        p1.setPcode(sc.nextLine());
+        System.out.print("Enter price for p1: ");
+        p1.setPrice(sc.nextInt());
+        sc.nextLine();  // Consume the newline character
+        
+        // Create a Product p2 with user input
+        Product p2 = new Product();
+        System.out.print("Enter product name for p2: ");
+        p2.setPname(sc.nextLine());
+        System.out.print("Enter product code for p2: ");
+        p2.setPcode(sc.nextLine());
+        System.out.print("Enter price for p2: ");
+        p2.setPrice(sc.nextInt());
+        sc.nextLine();  // Consume the newline character
+        
+        // Create a Product p3 with user input
+        Product p3 = new Product();
+        System.out.print("Enter product name for p3: ");
+        p3.setPname(sc.nextLine());
+        System.out.print("Enter product code for p3: ");
+        p3.setPcode(sc.nextLine());
+        System.out.print("Enter price for p3: ");
+        p3.setPrice(sc.nextInt());
+
+        // Display details of all products
+        System.out.println("\nDisplaying p1:");
+        p1.display();
+        System.out.println("\nDisplaying p2:");
+        p2.display();
+        System.out.println("\nDisplaying p3:");
+        p3.display();
+
+        // Find the product with the lowest price
+        Product lowestPriceProduct = (p3.getPrice() < (p1.getPrice() < p2.getPrice() ? p1.getPrice() : p2.getPrice())) ? p3 : (p1.getPrice() < p2.getPrice() ? p1 : p2);
+
+        System.out.println("\nDisplaying product with lowest price:");
+        lowestPriceProduct.display();
+        
+        sc.close(); // Close the scanner
+    }
+}
